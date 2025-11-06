@@ -23,14 +23,23 @@ const SensorMarker: React.FC<SensorMarkerProps> = ({ sensor, threshold = 0.7, on
   const [showInfo, setShowInfo] = React.useState(false);
   const isLeak = sensor.leak_probability > threshold;
 
-  const markerIcon = {
-    path: window.google?.maps?.SymbolPath?.CIRCLE || 0,
-    fillColor: isLeak ? '#E57373' : '#42A5F5',
-    fillOpacity: 0.8,
-    strokeColor: isLeak ? '#C62828' : '#1565C0',
-    strokeWeight: 2,
-    scale: isLeak ? 10 : 8,
-  };
+  // Create custom marker icon with SVG
+  const markerIcon = React.useMemo(() => {
+    const svgMarker = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+        <circle cx="16" cy="16" r="12" fill="${isLeak ? '#E57373' : '#42A5F5'}"
+                stroke="${isLeak ? '#C62828' : '#1565C0'}" stroke-width="3"/>
+        ${isLeak ? '<text x="16" y="20" text-anchor="middle" fill="white" font-size="16" font-weight="bold">!</text>' : ''}
+      </svg>
+    `;
+
+    return {
+      url: `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svgMarker)}`,
+      scaledSize: typeof window !== 'undefined' && window.google
+        ? new window.google.maps.Size(isLeak ? 32 : 24, isLeak ? 32 : 24)
+        : undefined,
+    };
+  }, [isLeak]);
 
   return (
     <>

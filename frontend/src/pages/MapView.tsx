@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Box, Container, Typography, Paper, Slider, FormControlLabel, Switch } from '@mui/material';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import { motion } from 'framer-motion';
-import SensorMarker from '../components/map/SensorMarker';
+import SensorMarker, { SensorData } from '../components/map/SensorMarker';
 import { useRealtimeSensors } from '../hooks/useRealtimeSensors';
 import toast from 'react-hot-toast';
 
@@ -27,7 +27,7 @@ const MapView: React.FC = () => {
     ? sensors.filter((s) => s.leak_probability > threshold)
     : sensors;
 
-  const handleMarkerClick = (sensor: any) => {
+  const handleMarkerClick = (sensor: SensorData) => {
     if (sensor.leak_probability > threshold) {
       toast.error(
         `Leak Alert! Sensor ${sensor.id} - ${(sensor.leak_probability * 100).toFixed(1)}% probability`,

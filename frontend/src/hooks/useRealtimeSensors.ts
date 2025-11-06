@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { db, collection, onSnapshot, query, orderBy, limit } from '../services/firebase';
 import { SensorData } from '../components/map/SensorMarker';
+import { mockSensors } from '../data/mockSensorData';
 
 export const useRealtimeSensors = (collectionName: string = 'sensors', limitCount: number = 100) => {
   const [sensors, setSensors] = useState<SensorData[]>([]);
@@ -8,9 +9,15 @@ export const useRealtimeSensors = (collectionName: string = 'sensors', limitCoun
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!db) {
-      setError('Firebase is not initialized. Please check your configuration.');
+    // Use mock data if Firebase is not configured
+    const isFirebaseConfigured = import.meta.env.VITE_FIREBASE_API_KEY &&
+                                  import.meta.env.VITE_FIREBASE_API_KEY !== '';
+
+    if (!isFirebaseConfigured || !db) {
+      console.warn('Firebase not configured, using mock data');
+      setSensors(mockSensors);
       setLoading(false);
+      setError(null);
       return;
     }
 
