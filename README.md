@@ -16,7 +16,7 @@
 > **An AI-powered, real-time water leak detection and visualization system designed to combat urban water scarcity.**  
 > Leveraging IoT, Vertex AI, and interactive dashboards, this system turns data into actionable insights for cities.
 
-![Demo GIF](https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif)  
+![Demo GIF](https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWM5dzB5eHExNzBqMmRpd2Zvdmc2dHp5NGUzeHpzbXg1YW1veXFpcyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0HlxB64LOpt3E8OQ/giphy.gif)
 
 ---
 
