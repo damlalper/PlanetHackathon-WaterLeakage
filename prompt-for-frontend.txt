@@ -1,0 +1,209 @@
+You are building a Google Cloud Hackathon project frontend for
+🚰 "Intelligent Water Leak Detection",
+an AI-powered sustainability dashboard.
+
+All backend, model, and API endpoints are already completed using:
+
+Vertex AI (trained XGBoost model for leak prediction)
+
+FastAPI (serving /predict endpoint)
+
+Firebase Firestore (real-time data updates from IoT sensors)
+
+Your task is to design and generate the complete React frontend visualization system.
+
+🧠 OBJECTIVE:
+
+Create a modern, high-impact React dashboard that visualizes AI water leak predictions in real time.
+The design must follow Google’s Material Design 3.0 principles,
+use Google Cloud style visuals, and emphasize environmental sustainability.
+
+The goal: Impress hackathon judges visually and technically.
+
+🎨 DESIGN & VISUAL GOALS
+
+Theme: Google Cloud Console aesthetic
+
+Color palette: Water & AI tones
+
+Primary: #1565C0 (blue)
+
+Secondary: #42A5F5 (light blue)
+
+Accent: #81C784 (eco green)
+
+Background: #E3F2FD (light cyan)
+
+Typography: Google Sans / Roboto
+
+Layout:
+
+Left sidebar for navigation
+
+Top bar with project title and real-time update indicator
+
+Main content → adaptive grid
+
+📱 CORE PAGES & COMPONENTS
+🏠 Dashboard Overview
+
+KPI cards showing:
+
+Total Active Sensors
+
+Leaks Detected Today
+
+Water Saved (liters)
+
+AI Model Accuracy (from Vertex)
+
+Time-series chart: Flow Rate & Pressure trend
+
+Pie/Donut chart: Leak probability by sensor zone
+
+Animated wave background (Framer Motion)
+
+"Refresh Data" button (fetch from /predict)
+
+🗺️ Map Visualization
+
+Use Google Maps API (@react-google-maps/api)
+
+Place markers for each IoT sensor (from Firebase)
+
+Popup card when clicked:
+
+Sensor ID
+
+Leak Probability
+
+Flow Rate, Pressure, Temperature
+
+Timestamp of last reading
+
+Marker color:
+
+🔵 Blue → Normal
+
+🔴 Red → Leak detected
+
+Optional: Cluster markers in dense areas
+
+📊 Analytics
+
+Charts using Recharts / Chart.js
+
+Display:
+
+Pressure vs Flow Rate correlation
+
+Model confidence histogram
+
+Leak vs Non-leak trend over time
+
+Include switch (Hourly / Daily / Monthly)
+
+⚙️ Model Insights
+
+Show performance metrics from Vertex AI:
+
+Accuracy, Precision, Recall
+
+Confusion matrix heatmap
+
+SHAP feature importance chart
+
+Button → “Retrain model” (links to Vertex AI pipeline)
+
+🔧 Admin & Settings
+
+Controls for:
+
+Leak threshold adjustment
+
+Sensor management (add/remove)
+
+Notification toggles (email / SMS)
+
+Dark & light mode switch (Material UI theme)
+
+Real-time Firestore status indicator
+
+⚡ TECH STACK
+
+⚛️ React + Vite
+
+🎨 TailwindCSS + Material UI (M3)
+
+🗺️ Google Maps API
+
+📈 Recharts / Chart.js
+
+🔥 Firebase Firestore
+
+🤖 Vertex AI REST API
+
+⚡ Axios for requests
+
+🎬 Framer Motion for transitions
+
+🧩 FEATURES & INTERACTIONS
+
+Smooth page transitions (Framer Motion)
+
+Skeleton loaders during fetch
+
+Toast notifications for leak alerts
+
+Water ripple animation in background
+
+Realtime sensor updates via Firestore
+
+Mobile responsive grid (Material layout system)
+
+“Powered by Google Cloud & Vertex AI” footer
+
+🏗️ OUTPUT EXPECTATIONS
+
+Generate:
+
+Component hierarchy & folder structure
+
+React Router structure for navigation
+
+JSX + Tailwind + MUI sample components
+
+Color & typography theme setup
+
+Example API fetch integration with Axios
+
+Charts & Map mockup with realistic placeholder data
+
+Responsive layout plan (desktop/tablet/mobile)
+
+💡 TONE & UX INSPIRATION
+
+Google Cloud Console
+
+Firebase Dashboard
+
+Google Sustainability Portal
+
+Datastudio (Looker) charts aesthetics
+
+🎯 END GOAL
+
+Produce a full, presentation-ready React dashboard layout and component design that:
+
+Looks like it was built by Google’s internal Cloud UI team
+
+Makes real-time AI predictions visually intuitive
+
+Can be directly connected to the existing FastAPI + Vertex AI backend
+
+Is visually stunning enough to win a global hackathon
+
+✅ Optional Closing Instruction
+
+“Now generate the component tree, file structure, color theme, and sample JSX code (using Tailwind + MUI + React Router).
+Include animations, charts, and data binding structure with Firebase and FastAPI endpoints.”
