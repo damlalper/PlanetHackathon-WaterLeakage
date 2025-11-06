@@ -1,141 +1,155 @@
-# PlanetHackathon-WaterLeakage: AI-Powered Water Leak Detection System
+# 🌍 PlanetHackathon-WaterLeakage: AI-Powered Water Leak Detection System
 
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
-> A full-stack, AI-driven platform for the real-time detection and visualization of water leaks in urban water infrastructure. This project combines a powerful machine learning model with a modern web interface to provide actionable insights for municipal water management.
+<p align="center">
+  <img src="https://simpleicons.org/icons/react.svg" alt="React" width="40" height="40"/>
+  <img src="https://simpleicons.org/icons/python.svg" alt="Python" width="40" height="40"/>
+  <img src="https://simpleicons.org/icons/googlecloud.svg" alt="Google Cloud" width="40" height="40"/>
+  <img src="https://simpleicons.org/icons/firebase.svg" alt="Firebase" width="40" height="40"/>
+  <img src="https://simpleicons.org/icons/xgboost.svg" alt="XGBoost" width="40" height="40"/>
+</p>
+
+---
+
+> **An AI-powered, real-time water leak detection and visualization system designed to combat urban water scarcity.**  
+> Leveraging IoT, Vertex AI, and interactive dashboards, this system turns data into actionable insights for cities.
+
+![Demo GIF](https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif)  
+
+---
 
 ## 🎯 Vision & Mission
 
-**Our mission is to empower cities with intelligent tools to combat water loss.** By providing a real-time, intuitive, and data-driven solution, we aim to help municipalities conserve water, reduce operational costs, and minimize the environmental impact of water leakage.
+**Mission:** Provide cities with intelligent tools to detect leaks instantly, reduce water loss, and minimize environmental impact.  
 
-## 💧 The Problem: Urban Water Leakage
+**Vision 2030:** With global water stress projected to impact **40% of the population**, proactive leak detection will be vital for sustainable urban living, energy efficiency, and climate resilience.
 
-Non-Revenue Water (NRW) is a critical global issue. A significant portion of this is lost through leaks in aging urban water distribution networks. These leaks lead to:
+---
 
-- **Massive Water Waste:** Billions of liters of treated water are lost daily.
-- **Financial Loss:** Lost revenue for municipalities and high costs for repair.
-- **Environmental Impact:** Wasted energy from water treatment and pumping, plus potential ground erosion.
-- **Operational Inefficiency:** Locating leaks is often a slow, manual, and resource-intensive process.
+## 💧 The Problem: Urban Water Leakage in 2030
+
+Aging infrastructure + inefficient manual monitoring leads to:
+
+- **Massive Water Waste:** Billions of liters lost daily.  
+- **Financial Loss:** Millions lost by municipalities yearly.  
+- **Environmental Impact:** Wasted energy, soil erosion, higher carbon footprint.  
+- **Operational Inefficiency:** Reactive, slow, resource-heavy leak detection.  
+
+> Undetected leaks exacerbate water scarcity and climate vulnerability.
+
+![Water Loss Infographic](https://upload.wikimedia.org/wikipedia/commons/1/11/Water_Leak.jpg)
+
+---
 
 ## 💡 Our Solution
 
-This project tackles the problem by creating a smart monitoring system that uses IoT sensor data and machine learning to predict and pinpoint leaks before they become critical failures.
+A **smart AI system** combining IoT, machine learning, and an interactive dashboard:
 
-The system architecture consists of three main components:
+1. **AI Prediction Service**
+   - **XGBoost** model trained on pressure, flow, and temperature.
+   - Hosted on **Google Cloud Vertex AI** for real-time prediction.
+2. **Real-Time Data & API Layer**
+   - **Firebase Firestore** stores live sensor data.
+   - **FastAPI** backend queries the model and serves frontend requests.
+3. **Interactive Dashboard**
+   - **React + Material UI + Tailwind CSS**
+   - Live geospatial maps, KPIs, analytics, and AI insights.
 
-1.  **AI Prediction Service:** An XGBoost model trained on sensor data (pressure, flow rate, temperature) is deployed on **Google Cloud Vertex AI**. It analyzes incoming data to calculate the probability of a leak.
-2.  **Real-Time Data & API Layer:**
-    - **Firebase Firestore** acts as the real-time database, ingesting data from IoT sensors across the city.
-    - A **FastAPI (Python)** backend serves as the central API, handling requests from the frontend, querying the Vertex AI model for predictions, and communicating with the database.
-3.  **Interactive Frontend Dashboard:** A **React** application provides a single pane of glass for city water operators. It features a live map, KPI dashboards, and detailed analytics, allowing users to visualize the network's health and respond to alerts instantly.
+### System Data Flow
 
-### System Architecture & Data Flow
-
-```
+```text
 [IoT Sensors] --(Real-time Data)--> [Firebase Firestore]
        ^                                      |
-       |                                      | (Real-time Updates)
+       |                                      | (Updates)
        |                                      v
-[React Frontend] <--(Prediction JSON)-- [FastAPI Backend]
+[React Frontend] <--(Predictions)-- [FastAPI Backend]
        ^                                      |
-       | (User Interaction)                   | (Prediction Request)
+       | (User Actions)                        | (Prediction Requests)
        |                                      v
-       +----------------------------> [Vertex AI Endpoint]
-                                        (XGBoost Model)
+       +------------------------> [Vertex AI Endpoint]
+                                   (XGBoost Model)
+
 ```
 
-## ✨ Key Features
+## Key Features
 
-- **Real-Time Geospatial Map:** Live visualization of all sensors on Google Maps, with markers dynamically colored based on leak probability.
-- **KPI Dashboard:** At-a-glance metrics including total sensors, active leak alerts, estimated water savings, and overall system health.
-- **Advanced Analytics:** Deep dive into sensor data with time-series charts, pressure vs. flow scatter plots, and prediction confidence histograms.
-- **Model Insights:** A dedicated view to monitor the AI model's performance, featuring accuracy metrics, a confusion matrix, and feature importance charts (SHAP).
-- **Alerting System:** Automatic toast notifications on the dashboard when a sensor's leak probability crosses a predefined threshold.
-- **Responsive Design:** Fully responsive interface built with Material Design principles for use on both desktop and mobile devices.
+- **Live Geospatial Map:** Real-time leak probabilities visualized on Google Maps.  
+- **KPI Dashboard:** Total leaks, water savings, carbon reduction, system health.  
+- **Advanced Analytics:** Pressure vs. flow, prediction confidence charts, SHAP insights.  
+- **Alerting:** Automatic notifications for threshold breaches.  
+- **Responsive Design:** Desktop and mobile ready.  
 
 ## 🗺️ Project Roadmap
 
-This roadmap outlines the key phases of development, from initial setup to a production-ready application.
-
-| Phase | Status      | Focus Area                  | Key Deliverables                                                                                             |
-| :---: | :---------- | :-------------------------- | :----------------------------------------------------------------------------------------------------------- |
-| **1** | ✅ Complete | **Foundation & Prototyping**  | - **Frontend:** UI/UX mockups, component library, and page skeletons (React, MUI, Tailwind).<br>- **AI:** Initial model training and evaluation (`train_model.py`).<br>- **Docs:** Detailed requirements analysis. |
-| **2** | 🔄 In-Progress | **MVP Implementation**        | - **Backend:** FastAPI server with a `/predict` endpoint.<br>- **AI:** Deploy trained model to a Vertex AI endpoint.<br>- **Frontend:** Integrate Google Maps, KPI cards, and basic charts. |
-| **3** | ⏳ Pending   | **End-to-End Integration**    | - **Integration:** Connect frontend to backend API.<br>- **Data Pipeline:** Set up Firestore listener for real-time data updates on the frontend.<br>- **Simulation:** Develop a sensor data simulator for live demos. |
-| **4** | ⏳ Pending   | **Deployment & Production**   | - **Deployment:** Deploy backend to Cloud Run and frontend to Firebase Hosting.<br>- **Testing:** Implement comprehensive integration and E2E tests.<br>- **Security:** Add API authentication and secure Firestore rules. |
-| **5** | 💡 Future    | **Advanced Features**         | - **MLOps:** Build a full Vertex AI pipeline for automated model retraining.<br>- **Alerting:** Integrate advanced notification services (Email, SMS).<br>- **Analytics:** Add cost-saving reports and anomaly detection features. |
+| Phase | Status | Focus Area | Key Deliverables |
+|-------|--------|------------|-----------------|
+| 1 | ✅ Complete | Foundation & Prototyping | UI/UX mockups, component library, initial XGBoost model |
+| 2 | 🔄 In-Progress | MVP Implementation | FastAPI backend, Vertex AI deployment, Google Maps integration |
+| 3 | ⏳ Pending | End-to-End Integration | Frontend-backend connection, real-time Firestore updates |
+| 4 | ⏳ Pending | Deployment & Production | Cloud Run + Firebase Hosting, integration tests |
+| 5 | 💡 Future | Advanced Features | Auto retraining, advanced alerting, cost-saving analytics |
 
 ## 🛠️ Technology Stack
 
-| Category      | Technology                                                              |
-|---------------|-------------------------------------------------------------------------|
-| **Frontend**  | React, Vite, TypeScript, Tailwind CSS, Material UI (MUI), Recharts, Framer Motion |
-| **Backend**   | Python, FastAPI, Uvicorn                                                |
-| **ML/AI**     | Scikit-learn (XGBoost), Google Cloud Vertex AI (Prediction, Pipelines)    |
-| **Database**  | Firebase Firestore (Real-time Data)                                     |
-| **Deployment**| Google Cloud Run (Backend), Firebase Hosting (Frontend)                 |
-| **DevOps**    | Docker, GitHub Actions (CI/CD planned)                                  |
+| Category | Technology |
+|----------|------------|
+| Frontend | React, TypeScript, Tailwind CSS, Material UI, Recharts, Framer Motion |
+| Backend | Python, FastAPI, Uvicorn |
+| ML/AI | XGBoost, Vertex AI (Prediction + Pipelines) |
+| Database | Firebase Firestore |
+| Deployment | Google Cloud Run, Firebase Hosting |
+| DevOps | Docker, GitHub Actions (CI/CD) |
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-- Node.js (v18+) and npm
-- Python (v3.10+) and pip
-- Google Cloud SDK (`gcloud`) installed and authenticated.
-- A Google Cloud Project with **Vertex AI, Firestore, and Cloud Run** APIs enabled.
+- Node.js (v18+) & npm  
+- Python (v3.10+) & pip  
+- Google Cloud SDK  
+- Google Cloud Project with Vertex AI, Firestore, Cloud Run  
 
 ### 1. Frontend Setup
 
 ```bash
-# Navigate to the frontend directory
 cd frontend
-
-# Install dependencies
 npm install
-
-# Create a .env file from the example
 cp .env.example .env
-
-# Add your Firebase project configuration and other keys to .env
-# VITE_API_BASE_URL=http://localhost:8000/api
-# VITE_FIREBASE_...
-
-# Run the development server
+# Add Firebase and API keys to .env
 npm run dev
 ```
-The app will be available at `http://localhost:5173`.
 
-### 2. Backend & AI Setup
+### 2. Backend Setup
+```bash
 
-The backend setup is a multi-step process involving model deployment and running the local API server.
+cd backend
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+# Deploy trained XGBoost model to Vertex AI Endpoint
+# Connect FastAPI to Vertex AI and Firebase
+```
 
-1.  **Deploy the Model:** Follow the instructions in `BACKEND_ROADMAP.md` (Phase 1) to deploy the trained model to a **Vertex AI Endpoint**.
-2.  **Configure the Backend:** Create the backend directory structure and files as outlined in `BACKEND_ROADMAP.md` (Phase 2).
-3.  **Run the API Server:**
-    ```bash
-    # Navigate to the backend directory (once created)
-    cd backend
+## 📈 Hackathon Strategy
 
-    # Install Python dependencies
-    pip install -r requirements.txt
+**Jury Impact:**  
+- **Live Demo:** Show real or simulated leak points on the map.  
+- **Measurable Results:** Prediction accuracy (90%+), water savings, and carbon reduction.  
+- **Innovation:** Vertex AI + Maps API + Dashboard = All-in-one solution.  
 
-    # Run the FastAPI server
-    uvicorn app.main:app --reload
-    ```
-The API will be available at `http://localhost:8000`.
+**Key KPIs to Highlight:**  
+- X leaks detected → Y liters of water saved  
+- Real-time prediction accuracy  
 
 ## 🤝 Contributing
 
-We welcome contributions! Please feel free to submit a pull request or open an issue to discuss your ideas.
-
-1.  Fork the repository.
-2.  Create your feature branch (`git checkout -b feature/AmazingFeature`).
-3.  Commit your changes (`git commit -m 'Add some AmazingFeature'`).
-4.  Push to the branch (`git push origin feature/AmazingFeature`).
-5.  Open a Pull Request.
+1. Fork the repository  
+2. Create your branch (`git checkout -b feature/AmazingFeature`)  
+3. Commit your changes (`git commit -m 'Add AmazingFeature'`)  
+4. Push to your branch (`git push origin feature/AmazingFeature`)  
+5. Open a Pull Request  
 
 ## 📄 License
 
-This project is distributed under the MIT License. See `LICENSE` for more information.
+MIT License – See [LICENSE](LICENSE) for details
