@@ -8,7 +8,7 @@
   <img src="https://simpleicons.org/icons/python.svg" alt="Python" width="40" height="40"/>
   <img src="https://simpleicons.org/icons/googlecloud.svg" alt="Google Cloud" width="40" height="40"/>
   <img src="https://simpleicons.org/icons/firebase.svg" alt="Firebase" width="40" height="40"/>
-  <img src="https://simpleicons.org/icons/xgboost.svg" alt="XGBoost" width="40" height="40"/>
+  <img src="https://simpleicons.org/icons/boost.svg" alt="XGBoost" width="40" height="40"/>
 </p>
 
 ---
