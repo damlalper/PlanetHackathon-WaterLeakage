@@ -39,3 +39,8 @@ water_leak_data/
 # Credentials
 kaggle.json
 kaggle(1).json
+
+firebase-key.json
+backend/firebase-key.json
+.env
+*.env

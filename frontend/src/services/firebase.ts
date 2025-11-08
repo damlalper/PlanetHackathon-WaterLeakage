@@ -13,7 +13,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+// Initialize Firestore with specific database ID
+const db = getFirestore(app, 'water-leak-db');
 
 export { db, collection, onSnapshot, query, orderBy, limit };
 
